@@ -1,0 +1,70 @@
+<app-manifest>
+
+  <style scoped>
+    :scope {
+      display: block;
+      counter-reset: manifest;
+      padding: 1em 0;
+    }
+    article {
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      white-space: nowrap;
+      text-align: left;
+      position: relative;
+      margin: .5em 0;
+    }
+    h3 {
+      width: 75%;
+      margin: 0;
+      padding: 0 5% 0 20%;
+      display: inline-block;
+      font-size: 100%;
+      font-weight: normal;
+      white-space: normal;
+      vertical-align: middle;
+    }
+    h3:before {
+      content: counter(manifest);
+      counter-increment: manifest;
+      position: absolute;
+      top: 50%;
+      margin-top: -.9em;
+      right: 83%;
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+      font-size: 120%;
+      border-radius: 1em;
+      text-align: center;
+      background: #55ACEE;
+      color: white;
+      vertical-align: middle;
+    }
+    h3:after {
+      content: '\25BA';
+      position: absolute;
+      right: 1em;
+      top: 50%;
+      margin-top: -.5em;
+      line-height: 1em;
+      color: #ccc;
+      font-size: 60%;
+    }
+    p {
+      width: 100%;
+      display: inline-block;
+    }
+  </style>
+
+  <article each={ props }>
+    <h3>{ title }</h3>
+    <p>{ desc }</p>
+  </article>
+
+  <script>
+    this.props = opts.props
+  </script>
+
+</app-manifest>

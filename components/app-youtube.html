@@ -1,0 +1,30 @@
+<app-youtube>
+
+  <style scoped>
+    :scope {
+      display: block;
+      padding: 1em 0;
+    }
+    figcaption {
+      color: #999;
+      font-size: 90%;
+    }
+  </style>
+
+  <figure each={ props }>
+    <iframe width="272" height="153" src={ embed } frameborder="0" allowfullscreen></iframe>
+    <figcaption>{ title }</figcaption>
+  </figure>
+
+  <script>
+    this.props = opts.props.map(function(v){
+      var id = v.url.replace(/^.+=/, '')
+      return {
+        title: v.title,
+        url:   v.url,
+        embed: 'https://www.youtube.com/embed/' + id + '?rel=0&amp;showinfo=0'
+      }
+    })
+  </script>
+
+</app-youtube>

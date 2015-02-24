@@ -1,0 +1,113 @@
+<app-hero>
+
+  <style scoped>
+    :scope { display: block }
+    .cover {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      width: 100%;
+      height: 320px;
+      background-size: cover;
+      background-image: url(images/photo.jpg);
+      background-position: center;
+    }
+    header {
+      margin: 280px 8% 20px;
+      padding: 1.3em 2em 0;
+      position: relative;
+    }
+    header:before,
+    header:after {
+      content: '*';
+      color: transparent;
+      background: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+    header:before {
+      bottom: 1em;
+      box-shadow: 0 0 4px rgba(0,0,0,.5);
+    }
+    header span {
+      padding: .5em 1em .3em;
+      background: #999;
+      color: white;
+      font-size: 80%;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 150%;
+      margin: .5em;
+    }
+    h2 {
+      font-weight: normal;
+      font-size: 90%;
+      margin: 0;
+    }
+    h3 {
+      background: #FA7373;
+      color: white;
+      font-size: 100%;
+      font-weight: normal;
+      margin: 0;
+      padding: 1em 0 .7em;
+      line-height: 1em;
+    }
+    p {
+      margin: 0;
+      padding: 1.3em 2em;
+      text-align: left;
+    }
+    ul {
+      padding: 0;
+      margin: 1.5em 0 2em;
+    }
+    li { display: inline-block }
+    li a { display: block }
+    fa {
+      width: 1.8em;
+      height: 1.8em;
+      border-radius: .9em;
+      color: white;
+      line-height: 1.8em;
+      font-size: 130%;
+      margin: 0 .3em;
+      overflow: none;
+      background: #42729A;
+    }
+    fa[icon=twitter] { background: #55ACEE }
+    fa[icon=facebook] { background: #415E9B }
+  </style>
+
+  <section class="cover"></section>
+
+  <header>
+    <span>{ props.title }</span>
+    <h1>{ props.name }</h1>
+    <h2>{ props.kana }</h2>
+    <ul>
+      <li each={ props.links }><a href={ url }><fa icon={ icon }></fa></a></li>
+    </ul>
+  </header>
+
+  <h3>{ props.copy }</h3>
+  <p>{ props.desc }</p>
+
+  <script>
+    this.props = opts.props
+    this.props.links = this.props.links.map(function(url){
+      return {
+        icon: /^https:\/\/twitter.com/.test(url) ? 'twitter'
+            : /^https:\/\/www.facebook.com/.test(url) ? 'facebook'
+            : 'globe',
+        url: url
+      }
+    })
+  </script>
+
+</app-hero>

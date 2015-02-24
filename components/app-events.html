@@ -1,0 +1,72 @@
+<app-events>
+
+  <style scoped>
+    :scope {
+      display: block;
+      padding: 1em 0;
+    }
+    article {
+      text-align: left;
+      position: relative;
+      margin: 1em 0;
+      padding-left: 6.3em;
+    }
+    h3 {
+      font-size: 110%;
+      font-weight: normal;
+      margin: 0 0 .7em;
+    }
+    h3 fa {
+      font-size: 1.7em;
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+      text-align: center;
+      color: white;
+      background: #7992A7;
+      position: absolute;
+      left: .8em;
+      top: 0;
+    }
+    time {
+      font-size: 90%;
+      display: block;
+      margin-bottom: .3em;
+      color: #666;
+    }
+    span {
+      display: block;
+      font-size: 85%;
+      color: #666;
+    }
+    span fa {
+      color: #E33247;
+      font-size: 120%;
+      margin-right: .3em;
+    }
+  </style>
+
+  <article each={ props }>
+    <h3><fa icon="bullhorn"></fa>{ title }</h3>
+    <time datetime={ start }>{ startJa }</time>
+    <span><fa icon="map-marker"></fa>{ location }</span>
+  </article>
+
+  <script>
+    var FORMAT = function(s){
+      var d = new Date(s)
+      return d.getFullYear() + '/' + d.getMonth() + '/' + d.getDate() + '(' + d.getDay() + ') ' +
+             d.getHours() + ':' + d.getMinutes()
+    }
+
+    this.props = opts.props.map(function(s){
+      return {
+        title:    s.title,
+        location: s.location,
+        start:    s.start,
+        startJa:  FORMAT(s.start)
+      }
+    })
+  </script>
+
+</app-events>

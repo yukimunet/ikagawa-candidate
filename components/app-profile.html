@@ -1,0 +1,75 @@
+<app-profile>
+
+  <style scoped>
+    :scope {
+      display: block;
+      background: #55ACEE!important;
+      color: white;
+      padding: 2.2em 0;
+    }
+    h3 {
+      font-size: 100%;
+      font-weight: normal;
+      margin: 0;
+    }
+    ul {
+      margin: 2em 0;
+      padding: 0;
+      border-top: 1px dotted white;
+      text-align: left;
+    }
+    li {
+      padding: .5em 1.2em;
+      border-bottom: 1px dotted white;
+    }
+    time {
+      margin-right: 1em;
+      font-weight: bold;
+    }
+    figure {
+      margin: 0;
+      padding: 0 1em;
+    }
+    figcaption {
+      padding: 1em;
+      margin-bottom: 3em;
+      background: white;
+      color: black;
+      position: relative;
+    }
+    figcaption:after {
+      content: '*';
+      color: transparent;
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 25px solid white;
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      margin-left: -25px;
+    }
+    img {
+      width: 40%;
+      border-radius: 3px;
+    }
+  </style>
+
+  <h3>{ props.title }</h3>
+  <ul>
+    <li each={ props.records }><time>{ year }</time>{ desc }</li>
+  </ul>
+
+  <figure>
+    <figcaption>
+      { props.message }
+    </figcaption>
+    <img src={ props.photo }>
+  </figure>
+
+  <script>
+    this.props = opts.props
+  </script>
+
+</app-profile>

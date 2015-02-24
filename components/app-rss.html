@@ -1,0 +1,47 @@
+<app-rss>
+
+  <style scoped>
+    :scope {
+      display: block;
+      background: #656363!important;
+      color: white;
+      padding: 2em 0;
+    }
+    fa {
+      font-size: 200%;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    .button {
+      background: white;
+      color: #656363;
+      width: 60%;
+      display: inline-block;
+      line-height: 2em;
+      border-radius: 3px;
+    }
+    ul {
+      margin: 2em 0;
+      padding: 0;
+      border-top: 1px dotted white;
+      text-align: left;
+    }
+    li {
+      padding: .8em 1.2em;
+      border-bottom: 1px dotted white;
+    }
+  </style>
+
+  <fa icon="rss-square"></fa>
+  <ul>
+    <li each={ props.news }><a href={ url }>{ title }</a></li>
+  </ul>
+  <a class="button" href={ props.url }>{ props.title }</a>
+
+  <script>
+    this.props = opts.props
+  </script>
+
+</app-rss>

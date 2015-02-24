@@ -1,0 +1,18 @@
+{
+  "name": "candidate",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Tsutomu Kawamura <tsutomu@librize.com>",
+  "license": "",
+  "private": true,
+  "devDependencies": {
+    "browser-sync": "^1.9.0",
+    "cssmin": "^0.4.2",
+    "normalize.css": "^3.0.2",
+    "riot": "cognitom/riotjs#scoped-css"
+  },
+  "scripts": {
+    "build": "riot --ext html ./components js/components.js && cssmin node_modules/normalize.css/normalize.css > css/normalize.min.css && cp node_modules/riot/riot.min.js js/riot.min.js",
+    "start": "riot --ext html -w ./components js/components.js & browser-sync start --server --files '*.*, js/*.*, css/*.*'"
+  }
+}
