@@ -1,0 +1,46 @@
+{
+  "profile": {
+    "name":    "五十川 員申",
+    "kana":    "いかがわ かずのぶ",
+    "title":   "◯◯◯◯◯◯ 立候補者",
+    "copy":    "◯◯◯◯◯◯◯◯◯・公認候補",
+    "desc":    "野々市市でcafe?IKAGAWA DO(五十川堂)をやっています。自分の考えた方法で地域コミュニティー活性化を目標に活動中！気軽にコワーキングも体験出来ます。",
+    "message": "節目の35歳を迎え、議会への出馬を決意しました。仕事で専門にしてきたITによる効率化について、議会で提案し、ブログなどで発信していきたいです。※これはサンプルコンテンツです。",
+    "blog":    "http://ikagawado.blogspot.jp/"
+    "photo":   "images/photo.jpg",
+    "profile": "images/profile.jpg"
+  }
+  "links": [
+    "https://twitter.com/Jimmy_cycle",
+    "https://www.facebook.com/IKAGAWADO",
+    "http://ikagawado.blogspot.jp/"
+  ],
+  "manifest": [
+    { "title": "議員のWeb発信を義務化します",
+      "desc":  "議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。" },
+    { "title": "◯◯◯◯の行政システムのオープンソース化を進めます",
+      "desc":  "議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。" },
+    { "title": "◯◯◯◯の公開情報についてAPI化を推し進めます",
+      "desc":  "議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。" }
+  ],
+  "records": [
+    { "year": "20xx年", "desc": "埼玉県◯◯市生まれ" },
+    { "year": "20xx年", "desc": "◯◯◯学校卒業" },
+    { "year": "20xx年", "desc": "デザインサテライト起業" },
+    { "year": "20xx年", "desc": "◯◯◯◯に転居" },
+    { "year": "20xx年", "desc": "◯◯◯◯受賞" },
+    { "year": "20xx年", "desc": "◯◯◯◯委員会" }
+  ],
+  "youtube": [
+    { "title": "政見放送",
+      "url":   "https://www.youtube.com/watch?v=QetCqjkZUI0" },
+    { "title": "街頭演説",
+      "url":   "https://www.youtube.com/watch?v=FBCzOf1aklc" }
+  ],
+  "labels": {
+    "profile": "経歴と実績",
+    "bloglink": "◯◯◯ブログへ"
+  },
+  "copyrights": "このWebサイトは、五十川員申の公式サイトです。掲載コンテンツは、クリエイティブコモンズライセンスのもとに公開されています。",
+  "license": "CC-BY",
+}
