@@ -14,48 +14,30 @@
 
   <script>
     this.hero = {
-      name:  '五十川 員申',
-      kana:  'いかがわ かずのぶ',
-      title: '◯◯◯◯◯◯ 立候補者',
-      copy:  '◯◯◯◯◯◯◯◯◯・公認候補',
-      desc:  '野々市市でcafe?IKAGAWA DO(五十川堂)をやっています。自分の考えた方法で地域コミュニティー活性化を目標に活動中！気軽にコワーキングも体験出来ます。',
-      photo: 'images/photo.jpg',
-      links: [
-        'https://twitter.com/Jimmy_cycle',
-        'https://www.facebook.com/IKAGAWADO',
-        'http://ikagawado.blogspot.jp/'
-      ]
+      name:  opts.profile.name,
+      kana:  opts.profile.kana,
+      title: opts.profile.title,
+      copy:  opts.profile.copy,
+      desc:  opts.profile.desc,
+      photo: opts.profile.photo,
+      links: opts.links
     }
-    this.youtube = [
-      { title: '政見放送', url: 'https://www.youtube.com/watch?v=QetCqjkZUI0' },
-      { title: '街頭演説', url: 'https://www.youtube.com/watch?v=FBCzOf1aklc' }
-    ]
-    this.manifest = [
-      { title: '議員のWeb発信を義務化します', desc: '議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。' },
-      { title: '◯◯◯◯の行政システムのオープンソース化を進めます', desc: '議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。' },
-      { title: '◯◯◯◯の公開情報についてAPI化を推し進めます', desc: '議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。' }
-    ]
+    this.youtube = opts.youtube
+    this.manifest = opts.manifest
     this.events = [
       { title: '街頭演説 (1)', start: '2015-03-20 10:00', location: '下北沢駅周辺' },
       { title: '街頭演説 (2)', start: '2015-03-22 10:00', location: '三軒茶屋駅周辺' },
       { title: 'オープンガバメント勉強会', start: '2015-03-23 18:00', location: '北沢タウンホール' }
     ]
     this.profile = {
-      title: '経歴と実績',
-      message: '節目の35歳を迎え、議会への出馬を決意しました。仕事で専門にしてきたITによる効率化について、議会で提案し、ブログなどで発信していきたいです。※これはサンプルコンテンツです。',
-      photo:   'images/profile.jpg',
-      records: [
-        { year: '20xx年', desc: '埼玉県◯◯市生まれ' },
-        { year: '20xx年', desc: '◯◯◯学校卒業' },
-        { year: '20xx年', desc: 'デザインサテライト起業' },
-        { year: '20xx年', desc: '◯◯◯◯に転居' },
-        { year: '20xx年', desc: '◯◯◯◯受賞' },
-        { year: '20xx年', desc: '◯◯◯◯委員会' }
-      ]
+      title:   opts.labels.profile,
+      message: opts.profile.message,
+      photo:   opts.profile.profile,
+      records: opts.records
     }
     this.rss = {
-      title: '◯◯◯ブログへ',
-      url: '#',
+      title: opts.labels.bloglink,
+      url: opts.profile.blog,
       news: [
         { date: '2015/3/18', title: '立候補の届け出をしてきました。', url: '#' },
         { date: '2015/3/16', title: '◯◯中学校の視察', url: '#' },
@@ -63,8 +45,8 @@
       ]
     }
     this.footer = {
-      copyrights: 'このWebサイトは、五十川員申の公式サイトです。掲載コンテンツは、クリエイティブコモンズライセンスのもとに公開されています。',
-      license:    'CC-BY'
+      copyrights: opts.copyrights,
+      license:    opts.license
     }
   </script>
 
