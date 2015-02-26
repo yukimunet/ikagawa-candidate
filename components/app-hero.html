@@ -33,7 +33,7 @@
     }
     header:before {
       bottom: 1em;
-      box-shadow: 0 0 4px rgba(0,0,0,.5);
+      box-shadow: 0 0 5px rgba(0,0,0,.5);
       background: transparent;
     }
     header span {
@@ -106,9 +106,7 @@
         top: 2em;
         margin: 0;
       }
-      .cover {
-        height: 480px;
-      }
+      .cover { height: 480px }
     }
     @media (min-width: 750px) {
       header {
@@ -116,6 +114,10 @@
         margin-left: auto;
         margin-right: auto;
       }
+    }
+    @media (min-width: 1000px) {
+      .cover { height: 560px }
+      header { margin-top: 380px }
     }
   </style>
 
