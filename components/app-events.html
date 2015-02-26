@@ -4,6 +4,9 @@
     :scope {
       display: block;
       padding: 1em 0;
+    }
+    section {
+      margin: 0 auto;
       text-align: left;
     }
     article {
@@ -11,8 +14,6 @@
       position: relative;
       margin: 1em 0;
       padding-left: 100px;
-      display: inline-block;
-      width: 250px;
     }
     h3 {
       font-size: 110%;
@@ -51,14 +52,23 @@
       :scope {
         padding: 1em 2em;
       }
+      section {
+        max-width: 700px;
+      }
+      article {
+        display: inline-block;
+        width: 250px;
+      }
     }
   </style>
 
-  <article each={ props }>
-    <h3><fa icon="bullhorn"></fa>{ title }</h3>
-    <time datetime={ start }>{ startJa }</time>
-    <span><fa icon="map-marker"></fa>{ location }</span>
-  </article>
+  <section>
+    <article each={ props }>
+      <h3><fa icon="bullhorn"></fa>{ title }</h3>
+      <time datetime={ start }>{ startJa }</time>
+      <span><fa icon="map-marker"></fa>{ location }</span>
+    </article>
+  </section>
 
   <script>
     var DAY_OF_WEEK = ['日', '月', '火', '水', '木', '金', '土']

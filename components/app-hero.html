@@ -62,11 +62,15 @@
       padding: 1em 0 .7em;
       line-height: 1em;
     }
-    p {
+    div {
+      background: white;
       margin: 0;
+    }
+    p {
+      margin: 0 auto;
       padding: 1.3em 2em;
       text-align: left;
-      background: white;
+      max-width: 700px;
     }
     ul {
       padding: 0;
@@ -127,7 +131,9 @@
   </header>
 
   <h3>{ props.copy }</h3>
-  <p>{ props.desc }</p>
+  <div>
+    <p>{ props.desc }</p>
+  </div>
 
   <script>
     this.props = opts.props
