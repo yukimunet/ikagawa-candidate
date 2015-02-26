@@ -9,10 +9,11 @@
     "browser-sync": "^1.9.0",
     "cssmin": "^0.4.2",
     "normalize.css": "^3.0.2",
-    "riot": "cognitom/riotjs#scoped-css"
+    "riot": "cognitom/riotjs#scoped-css",
+    "uglify-js": "^2.4.16"
   },
   "scripts": {
-    "build": "riot --ext html ./components js/components.js && cssmin node_modules/normalize.css/normalize.css > css/normalize.min.css && cp node_modules/riot/riot.min.js js/riot.min.js",
+    "build": "riot --ext html ./components js/components.js && uglifyjs js/components.js -o js/components.min.js && cssmin node_modules/normalize.css/normalize.css > css/normalize.min.css && cp node_modules/riot/riot.min.js js/riot.min.js",
     "start": "riot --ext html -w ./components js/components.js & browser-sync start --server --files '*.*, js/*.*, css/*.*'"
   }
 }
