@@ -55,6 +55,37 @@
     p {
       width: 100%;
       display: inline-block;
+      font-size: 92%;
+    }
+    @media (min-width: 500px) {
+      :scope {
+        white-space: nowrap;
+        overflow-x: scroll;
+        width: 100%;
+      }
+      article {
+        display: inline-block;
+        width: 14em;
+        margin: 1.5em;
+      }
+      h3 {
+        display: block;
+        padding: 0 0 1em;
+        margin: 4em 0 1em;
+        width: auto;
+        border-bottom: 1px solid #ddd;
+      }
+      p {
+        display: block;
+        white-space: normal;
+      }
+      h3:before {
+        top: 0;
+        margin-top: 0;
+        left: 50%;
+        margin-left: -1em;
+      }
+      h3:after { display: none }
     }
   </style>
 

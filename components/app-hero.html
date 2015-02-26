@@ -13,8 +13,8 @@
       background-position: center;
     }
     header {
-      margin: 280px 8% 20px;
-      padding: 1.3em 2em 0;
+      margin: 280px 8% 0;
+      padding: 1.3em 2em 1.5em;
       position: relative;
     }
     header:before,
@@ -42,7 +42,7 @@
     h1 {
       font-weight: normal;
       font-size: 150%;
-      margin: .5em;
+      margin: .5em 0;
     }
     h2 {
       font-weight: normal;
@@ -62,10 +62,11 @@
       margin: 0;
       padding: 1.3em 2em;
       text-align: left;
+      background: white;
     }
     ul {
       padding: 0;
-      margin: 1.5em 0 2em;
+      margin: 1.5em 0 .2em;
     }
     li { display: inline-block }
     li a { display: block }
@@ -79,9 +80,27 @@
       margin: 0 .3em;
       overflow: none;
       background: #42729A;
+      text-align: center;
     }
     fa[icon=twitter] { background: #55ACEE }
     fa[icon=facebook] { background: #415E9B }
+
+    @media (min-width: 500px) {
+      header {
+        text-align: left;
+        margin-left: 12%;
+        margin-right: 12%;
+      }
+      ul {
+        position: absolute;
+        right: 1.5em;
+        top: 2em;
+        margin: 0;
+      }
+      .cover {
+        height: 480px;
+      }
+    }
   </style>
 
   <section class="cover"></section>

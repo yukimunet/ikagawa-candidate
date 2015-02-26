@@ -7,6 +7,11 @@
       color: white;
       padding: 2em 0;
     }
+    section {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
     fa {
       font-size: 200%;
     }
@@ -27,18 +32,42 @@
       padding: 0;
       border-top: 1px dotted white;
       text-align: left;
+      list-style: none;
     }
     li {
       padding: .8em 1.2em;
       border-bottom: 1px dotted white;
     }
+    @media (min-width: 700px) {
+      fa {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 300%;
+      }
+      ul {
+        margin-left: 10em;
+      }
+      .button {
+        width: 8em;
+        float: left;
+        font-size: 90%;
+        margin-top: -4em;
+        background-color: rgba(255,255,255,.5);
+      }
+      .button:hover {
+        background-color: white;
+      }
+    }
   </style>
 
-  <fa icon="rss-square"></fa>
-  <ul>
-    <li each={ props.news }><a href={ url }>{ title }</a></li>
-  </ul>
-  <a class="button" href={ props.url }>{ props.title }</a>
+  <section>
+    <fa icon="rss-square"></fa>
+    <ul>
+      <li each={ props.news }><a href={ url }>{ title }</a></li>
+    </ul>
+    <a class="button" href={ props.url }>{ props.title }</a>
+  </section>
 
   <script>
     this.props = opts.props

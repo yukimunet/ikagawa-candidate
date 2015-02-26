@@ -4,12 +4,15 @@
     :scope {
       display: block;
       padding: 1em 0;
+      text-align: left;
     }
     article {
       text-align: left;
       position: relative;
       margin: 1em 0;
-      padding-left: 6.3em;
+      padding-left: 100px;
+      display: inline-block;
+      width: 250px;
     }
     h3 {
       font-size: 110%;
@@ -44,6 +47,11 @@
       font-size: 120%;
       margin-right: .3em;
     }
+    @media (min-width: 500px) {
+      :scope {
+        padding: 1em 2em;
+      }
+    }
   </style>
 
   <article each={ props }>
@@ -53,10 +61,12 @@
   </article>
 
   <script>
+    var DAY_OF_WEEK = ['日', '月', '火', '水', '木', '金', '土']
     var FORMAT = function(s){
+      function pad (n) { return (n < 10 ? '0' : '') + n }
       var d = new Date(s)
-      return d.getFullYear() + '/' + d.getMonth() + '/' + d.getDate() + '(' + d.getDay() + ') ' +
-             d.getHours() + ':' + d.getMinutes()
+      return d.getFullYear() + '/' + d.getMonth() + '/' + d.getDate() + '(' + DAY_OF_WEEK[d.getDay()] + ') ' +
+             d.getHours() + ':' + pad(d.getMinutes())
     }
 
     this.props = opts.props.map(function(s){

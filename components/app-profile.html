@@ -6,6 +6,14 @@
       background: #55ACEE!important;
       color: white;
       padding: 2.2em 0;
+      position: relative;
+      overflow: auto;
+      zoom: 1;
+    }
+    section {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
     }
     h3 {
       font-size: 100%;
@@ -15,12 +23,15 @@
     ul {
       margin: 2em 0;
       padding: 0;
-      border-top: 1px dotted white;
       text-align: left;
+      list-style: none;
     }
     li {
       padding: .5em 1.2em;
       border-bottom: 1px dotted white;
+    }
+    li:first-child {
+      border-top: 1px dotted white;
     }
     time {
       margin-right: 1em;
@@ -54,19 +65,35 @@
       width: 40%;
       border-radius: 3px;
     }
+    @media (min-width: 700px) {
+      div {
+        width: 350px;
+        padding-top: 1em;
+        float: right;
+      }
+      figure {
+        width: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
   </style>
 
-  <h3>{ props.title }</h3>
-  <ul>
-    <li each={ props.records }><time>{ year }</time>{ desc }</li>
-  </ul>
-
-  <figure>
-    <figcaption>
-      { props.message }
-    </figcaption>
-    <img src={ props.photo }>
-  </figure>
+  <section>
+    <div>
+      <h3>{ props.title }</h3>
+      <ul>
+        <li each={ props.records }><time>{ year }</time>{ desc }</li>
+      </ul>
+    </div>
+    <figure>
+      <figcaption>
+        { props.message }
+      </figcaption>
+      <img src={ props.photo }>
+    </figure>
+  </section>
 
   <script>
     this.props = opts.props
