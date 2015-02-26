@@ -102,7 +102,7 @@ riot.tag('app', '<app-hero props="{ hero }"></app-hero> <app-youtube props="{ yo
   
 });
 
-riot.tag('fa', '', '@font-face { font-family: \'FontAwesome\'; src: url(\'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0\') format(\'woff\'), url(\'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular\') format(\'svg\'); font-weight: normal; font-style: normal; } fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; transform: translate(0, 0); }', function(opts) {
+riot.tag('fa', '', '@font-face { font-family: \'FontAwesome\'; src: url(\'//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot\'); src: url(\'//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot#iefix\') format(\'embedded-opentype\'), url(\'//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2\') format(\'woff2\'), url(\'//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff\') format(\'woff\'), url(\'//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf\') format(\'truetype\'), url(\'//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg#fontawesomeregular\') format(\'svg\'); font-weight: normal; font-style: normal; } fa { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; transform: translate(0, 0); }', function(opts) {
     GLYPHS = {
       'glass': 'f000',
       'music': 'f001',
