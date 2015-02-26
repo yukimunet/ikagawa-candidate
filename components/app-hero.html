@@ -23,6 +23,8 @@
       color: transparent;
       background: white;
       position: absolute;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
       top: 0;
       left: 0;
       right: 0;
@@ -39,6 +41,7 @@
       background: rgba(0,0,0,.5);
       color: white;
       font-size: 80%;
+      border-radius: 2px;
     }
     h1 {
       font-weight: normal;
@@ -101,6 +104,13 @@
       }
       .cover {
         height: 480px;
+      }
+    }
+    @media (min-width: 750px) {
+      header {
+        width: 550px;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
   </style>
