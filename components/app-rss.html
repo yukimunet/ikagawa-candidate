@@ -64,13 +64,37 @@
   <section>
     <fa icon="rss-square"></fa>
     <ul>
-      <li each={ props.news }><a href={ url }>{ title }</a></li>
+      <li each={ articles }><a href={ url }>{ title }</a></li>
     </ul>
     <a class="button" href={ props.url }>{ props.title }</a>
   </section>
 
   <script>
+    var FEED_API = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&q='
+    var MAX = 3
+    var jsonp = function (url, cb) {
+      var c = '__JsonpCallback__'
+      var s = document.createElement('script');
+      s.src = url.replace(/\?$/, c)
+      window[c] = function(d){ cb(d); delete window[c] }
+      document.getElementsByTagName('head')[0].appendChild(s)
+    }
+
     this.props = opts.props
+    this.articles = []
+
+    load (data) {
+      var feed = data.responseData.feed
+      this.articles = feed.entries.map(function(entry){
+        return {
+          title: entry.title,
+          url:   entry.link
+        }
+      })
+      this.update()
+    }
+
+    jsonp(FEED_API + this.props.feed + '&num=' + MAX + '&callback=?', this.load)
   </script>
 
 </app-rss>
