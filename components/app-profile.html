@@ -20,6 +20,7 @@
       font-weight: normal;
       margin: 0;
     }
+    h3 fa { font-size: 200% }
     ul {
       margin: 2em 0;
       padding: 0;
@@ -82,9 +83,9 @@
 
   <section>
     <div>
-      <h3>{ props.title }</h3>
+      <h3><fa icon="trophy"></fa></h3>
       <ul>
-        <li each={ props.records }><time>{ year }</time>{ desc }</li>
+        <li each={ records }><time>{ year }</time>{ desc }</li>
       </ul>
     </div>
     <figure>
@@ -97,6 +98,7 @@
 
   <script>
     this.props = opts.props
+    this.records = opts.records
   </script>
 
 </app-profile>

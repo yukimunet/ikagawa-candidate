@@ -6,8 +6,16 @@
     "copy":    "◯◯◯◯◯◯◯◯◯・公認候補",
     "desc":    "野々市市でcafe?IKAGAWA DO(五十川堂)をやっています。自分の考えた方法で地域コミュニティー活性化を目標に活動中！気軽にコワーキングも体験出来ます。",
     "message": "節目の35歳を迎え、議会への出馬を決意しました。仕事で専門にしてきたITによる効率化について、議会で提案し、ブログなどで発信していきたいです。※これはサンプルコンテンツです。",
-    "blog":    "http://ikagawado.blogspot.jp/",
-    "feed":     "http://ikagawado.blogspot.com/feeds/posts/default",
+    "photo":   "images/photo.jpg",
+    "profile": "images/profile.jpg"
+  },
+  "preopen": {
+    "name":    "五十川 員申",
+    "kana":    "いかがわ かずのぶ",
+    "title":   "五十川員申後援会サイト",
+    "copy":    "野々市ではじめよう!",
+    "desc":    "野々市市でcafe?IKAGAWA DO(五十川堂)をやっています。自分の考えた方法で地域コミュニティー活性化を目標に活動中！気軽にコワーキングも体験出来ます。",
+    "message": "いろいろ準備中...",
     "photo":   "images/photo.jpg",
     "profile": "images/profile.jpg"
   },
@@ -18,11 +26,14 @@
   ],
   "manifest": [
     { "title": "議員のWeb発信を義務化します",
-      "desc":  "議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。" },
+      "desc":  "議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。",
+      "more":  "" },
     { "title": "◯◯◯◯の行政システムのオープンソース化を進めます",
-      "desc":  "議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。" },
+      "desc":  "議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。",
+      "more":  "" },
     { "title": "◯◯◯◯の公開情報についてAPI化を推し進めます",
-      "desc":  "議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。" }
+      "desc":  "議会の様子はなかなか市民に見えてきません。議員ひとりひとりが、ブログやFacebookなどを通じて、その様子を伝えることが求められています。",
+      "more":  "" }
   ],
   "records": [
     { "year": "20xx年", "desc": "埼玉県◯◯市生まれ" },
@@ -38,10 +49,14 @@
     { "title": "街頭演説",
       "url":   "https://www.youtube.com/watch?v=FBCzOf1aklc" }
   ],
-  "labels": {
-    "profile": "経歴と実績",
-    "bloglink": "◯◯◯ブログへ"
+  "feed": {
+    "type":  "rss",
+    "title": "◯◯◯ブログへ",
+    "url":   "http://ikagawado.blogspot.jp/",
+    "api":   "http://ikagawado.blogspot.com/feeds/posts/default",
+    "max":   "3"
   },
+  "publishdate": "2015-04-19T00:00",
   "copyrights": "このWebサイトは、五十川員申の公式サイトです。掲載コンテンツは、クリエイティブコモンズライセンスのもとに公開されています。",
   "license": "CC-BY"
 }

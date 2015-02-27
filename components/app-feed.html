@@ -1,4 +1,4 @@
-<app-rss>
+<app-feed>
 
   <style scoped>
     :scope {
@@ -71,7 +71,6 @@
 
   <script>
     var FEED_API = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&q='
-    var MAX = 3
     var jsonp = function (url, cb) {
       var c = '__JsonpCallback__'
       var s = document.createElement('script');
@@ -94,7 +93,7 @@
       this.update()
     }
 
-    jsonp(FEED_API + this.props.feed + '&num=' + MAX + '&callback=?', this.load)
+    jsonp(FEED_API + this.props.api + '&num=' + this.props.max + '&callback=?', this.load)
   </script>
 
-</app-rss>
+</app-feed>

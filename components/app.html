@@ -4,46 +4,30 @@
     :scope > *:nth-child(even) { background: #eaeaea }
   </style>
 
-  <app-hero     props={ hero     } />
+  <app-hero     props={ hero     } links={ links } />
   <app-youtube  props={ youtube  } />
   <app-manifest props={ manifest } />
   <app-events   props={ events   } />
-  <app-profile  props={ profile  } />
-  <app-rss      props={ rss      } />
+  <app-profile  props={ profile  } records={ records } />
+  <app-feed     props={ feed     } />
   <app-footer   props={ footer   } />
 
   <script>
-    this.hero = {
-      name:  opts.profile.name,
-      kana:  opts.profile.kana,
-      title: opts.profile.title,
-      copy:  opts.profile.copy,
-      desc:  opts.profile.desc,
-      photo: opts.profile.photo,
-      links: opts.links
-    }
-    this.youtube = opts.youtube
+    var pre = (new Date().getTime() < new Date(opts.publishdate).getTime())
+    
+    this.hero     = pre ? opts.preopen : opts.profile
+    this.links    = opts.links
+    this.youtube  = opts.youtube
     this.manifest = opts.manifest
-    this.events = [
+    this.profile  = { message: this.hero.message, photo: this.hero.profile }
+    this.records  = opts.records
+    this.feed     = opts.feed
+    this.footer   = { copyrights: opts.copyrights, license: opts.license }
+    this.events   = [
       { title: '街頭演説 (1)', start: '2015-03-20T10:00', location: '下北沢駅周辺' },
       { title: '街頭演説 (2)', start: '2015-03-22T10:00', location: '三軒茶屋駅周辺' },
       { title: 'オープンガバメント勉強会', start: '2015-03-23T18:00', location: '北沢タウンホール' }
     ]
-    this.profile = {
-      title:   opts.labels.profile,
-      message: opts.profile.message,
-      photo:   opts.profile.profile,
-      records: opts.records
-    }
-    this.rss = {
-      title: opts.labels.bloglink,
-      url: opts.profile.blog,
-      feed: opts.profile.feed
-    }
-    this.footer = {
-      copyrights: opts.copyrights,
-      license:    opts.license
-    }
   </script>
 
 </app>

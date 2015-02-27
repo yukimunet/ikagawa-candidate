@@ -131,7 +131,7 @@
     <h1>{ props.name }</h1>
     <h2>{ props.kana }</h2>
     <ul>
-      <li each={ props.links }><a href={ url }><fa icon={ icon }></fa></a></li>
+      <li each={ links }><a href={ url }><fa icon={ icon }></fa></a></li>
     </ul>
   </header>
 
@@ -142,7 +142,7 @@
 
   <script>
     this.props = opts.props
-    this.props.links = this.props.links.map(function(url){
+    this.links = opts.links.map(function(url){
       return {
         icon: /^https:\/\/twitter.com/.test(url) ? 'twitter'
             : /^https:\/\/www.facebook.com/.test(url) ? 'facebook'
