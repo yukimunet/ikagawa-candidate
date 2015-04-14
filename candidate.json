@@ -2,10 +2,10 @@
   "profile": {
     "name":    "五十川 員申",
     "kana":    "いかがわ かずのぶ",
-    "title":   "◯◯◯◯◯◯ 立候補者",
-    "copy":    "◯◯◯◯◯◯◯◯◯・公認候補",
+    "title":   "野々市市議会議員 立候補者",
+    "copy":    "野々市の未来を拓く",
     "desc":    "野々市市でcafe?IKAGAWA DO(五十川堂)をやっています。自分の考えた方法で地域コミュニティー活性化を目標に活動中！気軽にコワーキングも体験出来ます。",
-    "message": "節目の35歳を迎え、議会への出馬を決意しました。仕事で専門にしてきたITによる効率化について、議会で提案し、ブログなどで発信していきたいです。※これはサンプルコンテンツです。",
+    "message": "大学入学と共に野々市へ移り住み。町から市になった野々市で何か自分に出来る事はないか？と考えた結果、議会への出馬を決意しました。仕事でも取り組んできたITによる効率化について、議会で提案していきたいです。また起業支援、コミュニテ作りにも取組んできたので知見をいかし、市民の皆様とより良い町づくりをしていきたいです。",
     "photo":   "https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfa1/t31.0-8/471385_10151090105631703_2108537916_o.jpg",
     "profile": "https://graph.facebook.com/50river/picture?type=large"
   },
@@ -36,18 +36,18 @@
       "url":   "" }
   ],
   "records": [
-    { "year": "20xx年", "desc": "埼玉県◯◯市生まれ" },
-    { "year": "20xx年", "desc": "◯◯◯学校卒業" },
-    { "year": "20xx年", "desc": "デザインサテライト起業" },
-    { "year": "20xx年", "desc": "◯◯◯◯に転居" },
-    { "year": "20xx年", "desc": "◯◯◯◯受賞" },
-    { "year": "20xx年", "desc": "◯◯◯◯委員会" }
+    { "year": "1983年", "desc": "岐阜県揖斐郡池田町生まれ" },
+    { "year": "2006年", "desc": "金沢工業大学卒業" },
+    { "year": "2007年", "desc": "イリノイ大学アーバナ・シャンペーン校に一年間留学" },
+    { "year": "2010年", "desc": "金沢工業大学大学院修了" },
+    { "year": "2011年", "desc": "金沢クリエイティブベンチャーコンテスト　一般部門最優秀賞" },
+    { "year": "2013年", "desc": "クリエイティブベンチャーシティ金沢　ビジネスプランアワード優秀賞" }
   ],
   "youtube": [
-    { "title": "政見放送",
-      "url":   "https://www.youtube.com/watch?v=QetCqjkZUI0" },
-    { "title": "街頭演説",
-      "url":   "https://www.youtube.com/watch?v=FBCzOf1aklc" }
+    { "title": "明日の地方自治は変わる",
+      "url":   "https://www.youtube.com/watch?v=LL_8p3W0-LU" },
+    { "title": "WHERE DOES MY MONEY GO?完成お披露目会 ",
+      "url":   "https://www.youtube.com/watch?v=5Zcg37faLGg" }
   ],
   "feed": {
     "type":  "rss",
