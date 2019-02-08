@@ -3,9 +3,11 @@ riot.tag('app-events', '<section> <article each="{ props }"> <h3><fa icon="bullh
     var FORMAT = function(s){
       function pad (n) { return (n < 10 ? '0' : '') + n }
       var d = new Date(s)
-      return d.getFullYear() + '/' + d.getMonth() + '/' + d.getDate() + '(' + DAY_OF_WEEK[d.getDay()] + ') ' +
+      return d.getFullYear() + '/' + (d.getMonth() + 1) + '/' + d.getDate() + '(' + DAY_OF_WEEK[d.getDay()] + ') ' +
              d.getHours() + ':' + pad(d.getMinutes())
     }
+
+    console.log(opts);
 
     this.props = opts.props.map(function(s){
       return {
@@ -20,6 +22,7 @@ riot.tag('app-events', '<section> <article each="{ props }"> <h3><fa icon="bullh
 
 riot.tag('app-feed', '<section> <fa icon="rss-square"></fa> <ul> <li each="{ articles }"><a href="{ url }">{ title }</a></li> </ul> <a class="button" href="{ props.url }">{ props.title }</a> </section>', 'app-feed { display: block; background: #656363!important; color: white; padding: 2em 0; } app-feed section { max-width: 700px; margin: 0 auto; position: relative; } app-feed fa { font-size: 200%; } app-feed a { color: white; text-decoration: none; } app-feed .button { background: white; color: #656363; width: 60%; display: inline-block; line-height: 2em; border-radius: 3px; } app-feed ul { margin: 2em 0; padding: 0; border-top: 1px dotted white; text-align: left; list-style: none; } app-feed li { padding: .8em 1.2em; border-bottom: 1px dotted white; } @media (min-width: 700px) { app-feed fa { position: absolute; top: 0; left: 0; font-size: 300%; } app-feed ul { margin-left: 10em; } app-feed .button { width: 8em; float: left; font-size: 90%; margin-top: -4em; background-color: rgba(255,255,255,.5); } app-feed .button:hover { background-color: white; } }', function(opts) {
     var FEED_API = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&q='
+    var FEED_API = 'http://www.gian-forest.jp/feed.php?url=';
     var jsonp = function (url, cb) {
       var c = '__JsonpCallback__'
       var s = document.createElement('script');
@@ -32,17 +35,19 @@ riot.tag('app-feed', '<section> <fa icon="rss-square"></fa> <ul> <li each="{ art
     this.articles = []
 
     this.load = function(data) {
-      var feed = data.responseData.feed
-      this.articles = feed.entries.map(function(entry){
-        return {
+      var data = JSON.parse(data);
+      var feed = data.feed
+      for (var i = 0; i < feed.length; i++) {
+        var entry = feed[i];
+        this.articles.push({
           title: entry.title,
           url:   entry.link
-        }
-      })
+        });
+      }
       this.update()
     }.bind(this);
 
-    jsonp(FEED_API + this.props.api + '&num=' + this.props.max + '&callback=?', this.load)
+    ajax(FEED_API + this.props.api + '&num=' + this.props.max + '&callback=?', this.load)
   
 });
 
@@ -51,7 +56,7 @@ riot.tag('app-footer', '<p>{ props.copyrights }</p>', 'app-footer { display: blo
   
 });
 
-riot.tag('app-hero', '<section class="cover" riot-style="background-image: url({ props.photo })"></section> <header> <span>{ props.title }</span> <h1>{ props.name }</h1> <h2>{ props.kana }</h2> <ul> <li each="{ links }"><a href="{ url }"><fa icon="{ icon }"></fa></a></li> </ul> </header> <h3>{ props.copy }</h3> <div> <p>{ props.desc }</p> </div>', 'app-hero { display: block } app-hero .cover { position: absolute; z-index: -1; top: 0; width: 100%; height: 320px; background-size: cover; background-position: center; } app-hero header { margin: 280px 8% 0; padding: 1.3em 2em 1.5em; position: relative; } app-hero header:before,app-hero header:after { content: \'*\'; color: transparent; background: white; position: absolute; border-top-left-radius: 5px; border-top-right-radius: 5px; top: 0; left: 0; right: 0; bottom: 0; z-index: -1; } app-hero header:before { bottom: 1em; box-shadow: 0 0 5px rgba(0,0,0,.5); background: transparent; } app-hero header span { padding: .5em 1em .3em; background: rgba(0,0,0,.5); color: white; font-size: 80%; border-radius: 2px; } app-hero h1 { font-size: 150%; margin: .7em 0 .2em; } app-hero h2 { font-weight: normal; font-size: 90%; margin: 0; } app-hero h3 { background: #FA7373; color: white; font-size: 100%; font-weight: normal; margin: 0; padding: 1em 0 .7em; line-height: 1em; box-shadow: 0 0 2px rgba(0,0,0,.3); position: absolute; left: 0; right: 0; } app-hero div { background: white; margin: 2.5em 0 0; } app-hero p { margin: 0 auto; padding: 1.3em 2em; text-align: left; max-width: 700px; } app-hero ul { padding: 0; margin: 1.5em 0 .2em; } app-hero li { display: inline-block } app-hero li a { display: block } app-hero fa { width: 1.8em; height: 1.8em; border-radius: .9em; color: white; line-height: 1.8em; font-size: 130%; margin: 0 .3em; overflow: none; background: #42729A; text-align: center; } app-hero fa[icon=twitter] { background: #55ACEE } app-hero fa[icon=facebook] { background: #415E9B } @media (min-width: 500px) { app-hero header { text-align: left; margin-left: 12%; margin-right: 12%; } app-hero header:after { background: rgba(255,255,255,.95) } app-hero ul { position: absolute; right: 1.5em; top: 2em; margin: 0; } app-hero .cover { height: 480px } } @media (min-width: 750px) { app-hero header { width: 550px; margin-left: auto; margin-right: auto; } } @media (min-width: 1000px) { app-hero .cover { height: 560px } app-hero header { margin-top: 380px } }', function(opts) {
+riot.tag('app-hero', '<section class="cover" riot-style="background-image: url({ props.photo })"></section> <header> <span>{ props.title }</span> <h1>{ props.name }</h1> <h2>{ props.kana }</h2> <ul> <li each="{ links }"><a href="{ url }"><fa icon="{ icon }"></fa></a></li> </ul> </header> <h3>{ props.copy }</h3> <div> <p>{ props.desc }</p> </div>', 'app-hero { display: block } app-hero .cover { position: absolute; z-index: -1; top: 0; width: 100%; height: 320px; background-size: cover; background-position: center; } app-hero header { margin: 280px 8% 0; padding: 1.3em 2em 1.5em; position: relative; } app-hero header:before,app-hero header:after { content: \'*\'; color: transparent; background: white; position: absolute; border-top-left-radius: 5px; border-top-right-radius: 5px; top: 0; left: 0; right: 0; bottom: 0; z-index: -1; } app-hero header:before { bottom: 1em; box-shadow: 0 0 5px rgba(0,0,0,.5); background: transparent; } app-hero header span { padding: .5em 1em .3em; background: rgba(0,0,0,.5); color: white; font-size: 80%; border-radius: 2px; } app-hero h1 { font-size: 150%; margin: .7em 0 .2em; } app-hero h2 { font-weight: normal; font-size: 90%; margin: 0; } app-hero h3 { background: #ff7f00; color: white; font-size: 100%; font-weight: normal; margin: 0; padding: 1em 0 .7em; line-height: 1em; box-shadow: 0 0 2px rgba(0,0,0,.3); position: absolute; left: 0; right: 0; } app-hero div { background: white; margin: 2.5em 0 0; } app-hero p { margin: 0 auto; padding: 1.3em 2em; text-align: left; max-width: 700px; } app-hero ul { padding: 0; margin: 1.5em 0 .2em; } app-hero li { display: inline-block } app-hero li a { display: block } app-hero fa { width: 1.8em; height: 1.8em; border-radius: .9em; color: white; line-height: 1.8em; font-size: 130%; margin: 0 .3em; overflow: none; background: #42729A; text-align: center; } app-hero fa[icon=twitter] { background: #55ACEE } app-hero fa[icon=facebook] { background: #415E9B } @media (min-width: 500px) { app-hero header { text-align: left; margin-left: 12%; margin-right: 12%; } app-hero header:after { background: rgba(255,255,255,.95) } app-hero ul { position: absolute; right: 1.5em; top: 2em; margin: 0; } app-hero .cover { height: 480px } } @media (min-width: 750px) { app-hero header { width: 550px; margin-left: auto; margin-right: auto; } } @media (min-width: 1000px) { app-hero .cover { height: 560px } app-hero header { margin-top: 380px } }', function(opts) {
     this.props = opts.props
     this.links = opts.links.map(function(url){
       return {
@@ -64,12 +69,12 @@ riot.tag('app-hero', '<section class="cover" riot-style="background-image: url({
   
 });
 
-riot.tag('app-manifest', '<article each="{ props }"> <h3>{ title }</h3> <p>{ desc }<a if="{ url }" href="{ url }"><fa icon="arrow-right"></fa>くわしく</a></p> </article>', 'app-manifest { display: block; counter-reset: manifest; padding: 1em 0; } app-manifest article { overflow: hidden; margin: 0; padding: 0; white-space: nowrap; text-align: left; position: relative; margin: .5em 0; } app-manifest h3 { width: 75%; margin: 0; padding: 0 5% 0 20%; display: inline-block; font-size: 100%; font-weight: normal; white-space: normal; vertical-align: middle; } app-manifest h3:before { content: counter(manifest); counter-increment: manifest; position: absolute; top: 50%; margin-top: -.9em; right: 83%; width: 2em; height: 2em; line-height: 2em; font-size: 120%; border-radius: 1em; text-align: center; background: #55ACEE; color: white; vertical-align: middle; } app-manifest h3:after { content: \'\\25BA\'; position: absolute; right: 1em; top: 50%; margin-top: -.5em; line-height: 1em; color: #ccc; font-size: 60%; } app-manifest p { width: 100%; display: inline-block; font-size: 92%; } @media (min-width: 500px) { app-manifest { white-space: nowrap; overflow-x: scroll; width: 100%; } app-manifest article { display: inline-block; width: 14em; margin: 1.5em; } app-manifest h3 { display: block; padding: 0 0 1em; margin: 4em 0 1em; width: auto; border-bottom: 1px solid #ddd; } app-manifest p { display: block; white-space: normal; } app-manifest h3:before { top: 0; margin-top: 0; left: 50%; margin-left: -1em; } app-manifest h3:after { display: none } }', function(opts) {
+riot.tag('app-manifest', '<article each="{ props }"> <h3>{ title }</h3> <p>{ desc }<a if="{ url }" href="{ url }"><fa icon="arrow-right"></fa>くわしく</a></p> </article>', 'app-manifest { display: block; counter-reset: manifest; padding: 1em 0; } app-manifest article { overflow: hidden; margin: 0; padding: 0; white-space: nowrap; text-align: left; position: relative; margin: .5em 0; } app-manifest h3 { width: 75%; margin: 0; padding: 0 5% 0 20%; display: inline-block; font-size: 100%; font-weight: normal; white-space: normal; vertical-align: middle; } app-manifest h3:before { content: counter(manifest); counter-increment: manifest; position: absolute; top: 50%; margin-top: -.9em; right: 83%; width: 2em; height: 2em; line-height: 2em; font-size: 120%; border-radius: 1em; text-align: center; background: #ffbb00; color: white; vertical-align: middle; } app-manifest h3:after { content: \'\\25BA\'; position: absolute; right: 1em; top: 50%; margin-top: -.5em; line-height: 1em; color: #ccc; font-size: 60%; } app-manifest p { width: 100%; display: inline-block; font-size: 92%; } @media (min-width: 500px) { app-manifest { white-space: nowrap; overflow-x: scroll; width: 100%; } app-manifest article { display: inline-block; width: 14em; margin: 1.5em; } app-manifest h3 { display: block; padding: 0 0 1em; margin: 4em 0 1em; width: auto; border-bottom: 1px solid #ddd; } app-manifest p { display: block; white-space: normal; } app-manifest h3:before { top: 0; margin-top: 0; left: 50%; margin-left: -1em; } app-manifest h3:after { display: none } }', function(opts) {
     this.props = opts.props
   
 });
 
-riot.tag('app-profile', '<section> <div> <h3><fa icon="trophy"></fa></h3> <ul> <li each="{ records }"><time>{ year }</time>{ desc }</li> </ul> </div> <figure> <figcaption> { props.message } </figcaption> <img riot-src="{ props.photo }"> </figure> </section>', 'app-profile { display: block; background: #55ACEE!important; color: white; padding: 2.2em 0; position: relative; overflow: auto; zoom: 1; } app-profile section { max-width: 700px; margin: 0 auto; position: relative; } app-profile h3 { font-size: 100%; font-weight: normal; margin: 0; } app-profile h3 fa { font-size: 200% } app-profile ul { margin: 2em 0; padding: 0; text-align: left; list-style: none; } app-profile li { padding: .5em 1.2em; border-bottom: 1px dotted white; } app-profile li:first-child { border-top: 1px dotted white; } app-profile time { margin-right: 1em; font-weight: bold; } app-profile figure { margin: 0; padding: 0 1em; } app-profile figcaption { padding: 16px; margin-bottom: 3em; background: white; color: black; position: relative; } app-profile figcaption:after { content: \'*\'; color: transparent; width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 25px solid white; position: absolute; bottom: -25px; left: 50%; margin-left: -17px; } app-profile img { width: 40%; border-radius: 3px; } @media (min-width: 700px) { app-profile div { width: 350px; padding-top: 1em; float: right; } app-profile figure { width: 300px; position: absolute; top: 0; left: 0; } }', function(opts) {
+riot.tag('app-profile', '<section> <div> <h3><fa icon="trophy"></fa></h3> <ul> <li each="{ records }"><time>{ year }</time>{ desc }</li> </ul> </div> <figure> <figcaption> { props.message } </figcaption> <img riot-src="{ props.photo }"> </figure> </section>', 'app-profile { display: block; background: #ffbb00!important; color: white; padding: 2.2em 0; position: relative; overflow: auto; zoom: 1; } app-profile section { max-width: 700px; margin: 0 auto; position: relative; } app-profile h3 { font-size: 100%; font-weight: normal; margin: 0; } app-profile h3 fa { font-size: 200% } app-profile ul { margin: 2em 0; padding: 0; text-align: left; list-style: none; } app-profile li { padding: .5em 1.2em; border-bottom: 1px dotted white; } app-profile li:first-child { border-top: 1px dotted white; } app-profile time { margin-right: 1em; font-weight: bold; } app-profile figure { margin: 0; padding: 0 1em; } app-profile figcaption { padding: 16px; margin-bottom: 3em; background: white; color: black; position: relative; } app-profile figcaption:after { content: \'*\'; color: transparent; width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 25px solid white; position: absolute; bottom: -25px; left: 50%; margin-left: -17px; } app-profile img { width: 40%; border-radius: 3px; } @media (min-width: 700px) { app-profile div { width: 350px; padding-top: 1em; float: right; } app-profile figure { width: 300px; position: absolute; top: 0; left: 0; } }', function(opts) {
     this.props = opts.props
     this.records = opts.records
   
@@ -87,9 +92,9 @@ riot.tag('app-youtube', '<figure each="{ props }"> <iframe width="272" height="1
   
 });
 
-riot.tag('app', '<app-hero props="{ hero }" links="{ links }"></app-hero> <app-youtube props="{ youtube }"></app-youtube> <app-manifest props="{ manifest }"></app-manifest> <app-events props="{ events }"></app-events> <app-profile props="{ profile }" records="{ records }"></app-profile> <app-feed props="{ feed }"></app-feed> <app-footer props="{ footer }"></app-footer>', 'app > *:nth-child(even) { background: #eaeaea }', function(opts) {
+riot.tag('app', '<app-hero props="{ hero }" links="{ links }"></app-hero> <app-manifest props="{ manifest }"></app-manifest> <app-youtube props="{ youtube }"></app-youtube> <app-events props="{ events }"></app-events> <app-profile props="{ profile }" records="{ records }"></app-profile> <app-feed props="{ feed }"></app-feed> <app-footer props="{ footer }"></app-footer>', 'app > *:nth-child(even) { background: #eaeaea }', function(opts) {
     var pre = (new Date().getTime() < new Date(opts.publishdate).getTime())
-    
+
     this.hero     = pre ? opts.preopen : opts.profile
     this.links    = opts.links
     this.youtube  = opts.youtube
@@ -98,11 +103,7 @@ riot.tag('app', '<app-hero props="{ hero }" links="{ links }"></app-hero> <app-y
     this.records  = opts.records
     this.feed     = opts.feed
     this.footer   = { copyrights: opts.copyrights, license: opts.license }
-    this.events   = [
-
-
-
-    ]
+    this.events   = opts.events
   
 });
 

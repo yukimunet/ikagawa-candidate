@@ -75,9 +75,11 @@
     var FORMAT = function(s){
       function pad (n) { return (n < 10 ? '0' : '') + n }
       var d = new Date(s)
-      return d.getFullYear() + '/' + d.getMonth() + '/' + d.getDate() + '(' + DAY_OF_WEEK[d.getDay()] + ') ' +
+      return d.getFullYear() + '/' + (d.getMonth() + 1) + '/' + d.getDate() + '(' + DAY_OF_WEEK[d.getDay()] + ') ' +
              d.getHours() + ':' + pad(d.getMinutes())
     }
+
+    console.log(opts);
 
     this.props = opts.props.map(function(s){
       return {

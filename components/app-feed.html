@@ -71,6 +71,7 @@
 
   <script>
     var FEED_API = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&q='
+    var FEED_API = 'http://www.gian-forest.jp/feed.php?url=';
     var jsonp = function (url, cb) {
       var c = '__JsonpCallback__'
       var s = document.createElement('script');
@@ -83,17 +84,19 @@
     this.articles = []
 
     load (data) {
-      var feed = data.responseData.feed
-      this.articles = feed.entries.map(function(entry){
-        return {
+      var data = JSON.parse(data);
+      var feed = data.feed
+      for (var i = 0; i < feed.length; i++) {
+        var entry = feed[i];
+        this.articles.push({
           title: entry.title,
           url:   entry.link
-        }
-      })
+        });
+      }
       this.update()
     }
 
-    jsonp(FEED_API + this.props.api + '&num=' + this.props.max + '&callback=?', this.load)
+    ajax(FEED_API + this.props.api + '&num=' + this.props.max + '&callback=?', this.load)
   </script>
 
 </app-feed>

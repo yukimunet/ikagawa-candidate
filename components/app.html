@@ -5,8 +5,8 @@
   </style>
 
   <app-hero     props={ hero     } links={ links } />
-  <app-youtube  props={ youtube  } />
   <app-manifest props={ manifest } />
+  <app-youtube  props={ youtube  } />
   <app-events   props={ events   } />
   <app-profile  props={ profile  } records={ records } />
   <app-feed     props={ feed     } />
@@ -14,7 +14,7 @@
 
   <script>
     var pre = (new Date().getTime() < new Date(opts.publishdate).getTime())
-    
+
     this.hero     = pre ? opts.preopen : opts.profile
     this.links    = opts.links
     this.youtube  = opts.youtube
@@ -23,11 +23,7 @@
     this.records  = opts.records
     this.feed     = opts.feed
     this.footer   = { copyrights: opts.copyrights, license: opts.license }
-    this.events   = [
-      //{ title: '街頭演説 (1)', start: '2015-03-20T10:00', location: '下北沢駅周辺' },
-      //{ title: '街頭演説 (2)', start: '2015-03-22T10:00', location: '三軒茶屋駅周辺' },
-      //{ title: 'オープンガバメント勉強会', start: '2015-03-23T18:00', location: '北沢タウンホール' }
-    ]
+    this.events   = opts.events
   </script>
 
 </app>
