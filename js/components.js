@@ -7,8 +7,6 @@ riot.tag('app-events', '<section> <article each="{ props }"> <h3><fa icon="bullh
              d.getHours() + ':' + pad(d.getMinutes())
     }
 
-    console.log(opts);
-
     this.props = opts.props.map(function(s){
       return {
         title:    s.title,
